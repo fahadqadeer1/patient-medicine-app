@@ -16,15 +16,23 @@
         <label>Name:</label>
         <input type="text" name="name" required>
 
-        <label>Frequency:</label>
-        <select name="frequency" required>
-            <option value="once">Once</option>
-            <option value="twice">Twice</option>
-            <option value="thrice">Thrice</option>
-        </select>
+        <label>Time of Intake:</label><br>
 
-        <label>Time of Intake (HH:MM:SS):</label>
-        <input type="time" name="time_of_intake" required>
+        <label>
+            <input type="checkbox" name="time_of_intake[]" value="08:00:00">
+            8 AM
+        </label><br>
+
+        <label>
+            <input type="checkbox" name="time_of_intake[]" value="14:00:00">
+            2 PM
+        </label><br>
+
+        <label>
+            <input type="checkbox" name="time_of_intake[]" value="20:00:00">
+            8 PM
+        </label><br>
+
 
         <label>For Infants:</label>
         <select name="for_infants" required>

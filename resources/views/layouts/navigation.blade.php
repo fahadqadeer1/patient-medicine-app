@@ -14,26 +14,21 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                        
- <header>
-        <h1>Patient Medicine App</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a></li>
-                <li><a href="{{ route('patients.index') }}" class="{{ request()->routeIs('patients.index') ? 'active' : '' }}">Patients</a></li>
-                <li><a href="{{ route('patients.listFemaleAdults') }}" class="{{ request()->routeIs('patients.listFemaleAdults') ? 'active' : '' }}">Female Adults (8PM)</a></li>
-                <li><a href="{{ route('patients.listMaleInfants') }}" class="{{ request()->routeIs('patients.listMaleInfants') ? 'active' : '' }}">Male Infants (8AM)</a></li>
-                <li><a href="{{ route('medicines.index') }}" class="{{ request()->routeIs('medicines.index') ? 'active' : '' }}">Medicines</a></li>
-                <li><a href="{{ route('intakes.index') }}" class="{{ request()->routeIs('intakes.index') ? 'active' : '' }}">Intakes</a></li>
-                <li>
-                    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                        @csrf
-                        <button type="submit" style="background:none;border:none;color:red;cursor:pointer;">Logout</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </header>                        
+                    </x-nav-link>
+                    <x-nav-link :href="route('patients.index')" :active="request()->routeIs('patients.index')">
+                        {{ __('Patients') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('patients.listFemaleAdults')" :active="request()->routeIs('patients.listFemaleAdults')">
+                        {{ __('Female Adults (8PM)') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('patients.listMaleInfants')" :active="request()->routeIs('patients.listMaleInfants')">
+                        {{ __('Male Infants (8AM)') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('medicines.index')" :active="request()->routeIs('medicines.index')">
+                        {{ __('Medicines') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('intakes.index')" :active="request()->routeIs('intakes.index')">
+                        {{ __('Intakes') }}
                     </x-nav-link>
                 </div>
             </div>

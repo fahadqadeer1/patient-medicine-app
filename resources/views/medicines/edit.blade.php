@@ -8,31 +8,46 @@
         </ul>
     </div>
 @endif
+
 @section('content')
-    <h2>Edit Medicine</h2>
-    <form method="POST" action="{{ route('medicines.update', $medicine->id) }}">
-        @csrf
-        @method('PUT')
+<h2>Edit Medicine</h2>
 
-        <label>Name:</label>
-        <input type="text" name="name" value="{{ $medicine->name }}" required>
+<form method="POST" action="{{ route('medicines.update', $medicine->id) }}">
+    @csrf
+    @method('PUT')
 
-        <label>Frequency:</label>
-        <select name="frequency" required>
-            <option value="once" {{ $medicine->frequency == 'once' ? 'selected' : '' }}>Once</option>
-            <option value="twice" {{ $medicine->frequency == 'twice' ? 'selected' : '' }}>Twice</option>
-            <option value="thrice" {{ $medicine->frequency == 'thrice' ? 'selected' : '' }}>Thrice</option>
-        </select>
+    <label>Name:</label>
+    <input type="text" name="name" value="{{ $medicine->name }}" required>
 
-        <label>Time of Intake (HH:MM:SS):</label>
-        <input type="time" name="time_of_intake" value="{{ $medicine->time_of_intake }}" required>
+    <label>Time of Intake:</label><br>
+    @php
+        $selectedTimes = explode(',', $medicine->time_of_intake);
+    @endphp
 
-        <label>For Infants:</label>
-        <select name="for_infants" required>
-            <option value="1" {{ $medicine->for_infants ? 'selected' : '' }}>Yes</option>
-            <option value="0" {{ !$medicine->for_infants ? 'selected' : '' }}>No</option>
-        </select>
+    <label>
+        <input type="checkbox" name="time_of_intake[]" value="08:00:00"
+            {{ in_array('08:00:00', $selectedTimes) ? 'checked' : '' }}>
+        8 AM
+    </label><br>
 
-        <button type="submit">Update</button>
-    </form>
+    <label>
+        <input type="checkbox" name="time_of_intake[]" value="14:00:00"
+            {{ in_array('14:00:00', $selectedTimes) ? 'checked' : '' }}>
+        2 PM
+    </label><br>
+
+    <label>
+        <input type="checkbox" name="time_of_intake[]" value="20:00:00"
+            {{ in_array('20:00:00', $selectedTimes) ? 'checked' : '' }}>
+        8 PM
+    </label><br>
+
+    <label>For Infants:</label>
+    <select name="for_infants" required>
+        <option value="1" {{ $medicine->for_infants ? 'selected' : '' }}>Yes</option>
+        <option value="0" {{ !$medicine->for_infants ? 'selected' : '' }}>No</option>
+    </select>
+
+    <button type="submit">Update</button>
+</form>
 @endsection

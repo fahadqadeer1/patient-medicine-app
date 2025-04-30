@@ -25,15 +25,18 @@ class MedicineController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'frequency' => 'required|in:once,twice,thrice',
-            'time_of_intake' => 'required|date_format:H:i',
+            'time_of_intake' => 'required|array',
+            'time_of_intake.*' => 'in:08:00:00,14:00:00,20:00:00',
             'for_infants' => 'required|boolean',
         ]);
 
         
-        
-        Medicine::create($request->all());
 
+        Medicine::create([
+            'name' => $request->name,
+            'time_of_intake' => implode(',', $request->time_of_intake), // convert array to string
+            'for_infants' => $request->for_infants,
+        ]); 
         return redirect()->route('medicines.index')->with('success', 'Medicine created successfully.');
     }
 
@@ -48,13 +51,17 @@ class MedicineController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'frequency' => 'required|in:once,twice,thrice',
-            'time_of_intake' => 'required|date_format:H:i:s',
+            'time_of_intake' => 'required|array',
+            'time_of_intake.*' => 'required|in:08:00:00,14:00:00,20:00:00',
             'for_infants' => 'required|boolean',
         ]);
 
-        $medicine->update($request->all());
-
+        $medicine->update([
+            'name' => $request->name,
+            'time_of_intake' => implode(',', $request->time_of_intake),
+            'for_infants' => $request->for_infants,
+        ]);
+        
         return redirect()->route('medicines.index')->with('success', 'Medicine updated successfully.');
     }
 

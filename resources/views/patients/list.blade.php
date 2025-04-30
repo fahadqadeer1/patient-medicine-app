@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patients List</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <h1>Patients List</h1>
     <ul>
         @foreach ($patients as $patient)
@@ -18,5 +13,5 @@
             </li>
         @endforeach
     </ul>
-</body>
-</html>
+@endsection
+

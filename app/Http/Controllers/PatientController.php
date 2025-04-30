@@ -82,7 +82,7 @@ class PatientController extends Controller
         $patients = Patient::where('gender', 'female')
             ->where('type', 'adult')
             ->with(['medicines' => function ($query) {
-                $query->where('time_of_intake', '20:00:00'); // 8 PM
+                $query->where('time_of_intake', 'like', '%20:00:00%');
             }])
             ->get();
 
@@ -95,7 +95,7 @@ class PatientController extends Controller
         $patients = Patient::where('gender', 'male')
             ->where('type', 'infant')
             ->with(['medicines' => function ($query) {
-                $query->where('time_of_intake', '08:00:00'); // 8 AM
+                $query->where('time_of_intake', 'like', '%08:00:00%');
             }])
             ->get();
 
