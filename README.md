@@ -46,29 +46,27 @@ All authenticated users	Access profile and dashboard
 ## 📌 Features
 #### Patient Management
 
-Create, edit, delete patients
-
-View lists filtered by gender and type (e.g., female adults, male infants)
+    Create, edit, delete patients
+    View lists filtered by gender and type (e.g., female adults, male infants)
 
 #### Medicine Management
-
-Add and edit medicines with intake options of once, twice, or three times daily, using checkboxes for 8 AM, 2 PM, and 8 PM time slots.
+    Add and edit medicines with intake options of once, twice, or three times daily, using checkboxes for 8 AM, 2 PM, and 8 PM time slots.
 
 #### Intake Records
 
-Log medicine intake (restricted to doctor / nurse)
+    Log medicine intake (restricted to doctor / nurse)
 
 #### User Authentication
 
-Register, login, logout, and manage profile
+    Register, login, logout, and manage profile
 
 #### Role-Based Navigation
 
-Menu items shown/hidden based on the user’s role
+    Menu items shown/hidden based on the user’s role
 
 #### Secure Routes
 
-Middleware restricts access to authorized roles only
+    Middleware restricts access to authorized roles only
 
 
 ## 🔗 Available Routes in the Patient Medicine App
