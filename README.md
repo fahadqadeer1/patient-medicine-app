@@ -44,29 +44,29 @@ All authenticated users	Access profile and dashboard
 
 
 ## 📌 Features
-# Patient Management
+#### Patient Management
 
 Create, edit, delete patients
 
 View lists filtered by gender and type (e.g., female adults, male infants)
 
-# Medicine Management
+#### Medicine Management
 
 Add and edit medicines with intake options of once, twice, or three times daily, using checkboxes for 8 AM, 2 PM, and 8 PM time slots.
 
-# Intake Records
+#### Intake Records
 
 Log medicine intake (restricted to doctor / nurse)
 
-# User Authentication
+#### User Authentication
 
 Register, login, logout, and manage profile
 
-# Role-Based Navigation
+#### Role-Based Navigation
 
 Menu items shown/hidden based on the user’s role
 
-# Secure Routes
+#### Secure Routes
 
 Middleware restricts access to authorized roles only
 
