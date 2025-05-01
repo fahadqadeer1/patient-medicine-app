@@ -30,7 +30,8 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
-npm install && npm run dev
+npm install
+npm run dev
 php artisan serve
 
 ```
@@ -43,34 +44,34 @@ All authenticated users	Access profile and dashboard
 
 
 ## 📌 Features
-Patient Management
+# Patient Management
 
 Create, edit, delete patients
 
 View lists filtered by gender and type (e.g., female adults, male infants)
 
-Medicine Management
+# Medicine Management
 
 Add and edit medicines with intake options of once, twice, or three times daily, using checkboxes for 8 AM, 2 PM, and 8 PM time slots.
 
-Intake Records
+# Intake Records
 
 Log medicine intake (restricted to doctor / nurse)
 
-User Authentication
+# User Authentication
 
 Register, login, logout, and manage profile
 
-Role-Based Navigation
+# Role-Based Navigation
 
 Menu items shown/hidden based on the user’s role
 
-Secure Routes
+# Secure Routes
 
 Middleware restricts access to authorized roles only
 
 
-🔗 Available Routes in the Patient Medicine App
+## 🔗 Available Routes in the Patient Medicine App
 
 | **Route** | **Purpose** |
 |-----------|-------------|
@@ -89,15 +90,21 @@ Middleware restricts access to authorized roles only
 | `/logout` | Logout the current user (via POST) |
 
 
+## Apis Routes
+| API Endpoint | Returns |
+|--------------|---------|
+| `GET /api/patients/female-adults-8pm` | All female adult patients with meds at 8 PM |
+| `GET /api/patients/male-infants-8am` | All male infant patients with meds at 8 AM |
 
-🔐 Access Control
+
+## 🔐 Access Control
 Most routes are protected with Laravel authentication middleware.
 
 Users must be logged in to access any of the data.
 
 Breeze is used for auth scaffolding (login, register, logout, etc.).
 
-📋 Sample Auth URLs
+## 📋 Sample Auth URLs
 Route	Purpose
 /login	Login page
 /register	Register page
