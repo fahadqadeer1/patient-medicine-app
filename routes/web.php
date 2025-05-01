@@ -33,21 +33,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     
-    // Special lists
-    Route::get('patients/female-adults', [PatientController::class, 'listFemaleAdults'])->name('patients.listFemaleAdults');
-    Route::get('patients/male-infants', [PatientController::class, 'listMaleInfants'])->name('patients.listMaleInfants');
+    // Doctors and Nurses only
+    Route::middleware('role:doctor,nurse')->group(function () {
+        Route::get('patients/female-adults', [PatientController::class, 'listFemaleAdults'])->name('patients.listFemaleAdults');
+        Route::get('patients/male-infants', [PatientController::class, 'listMaleInfants'])->name('patients.listMaleInfants');
+        Route::resource('patients', PatientController::class);
+        Route::resource('intakes', IntakeController::class)->except(['show', 'edit', 'update']);
+    });
 
-    Route::resource('patients', PatientController::class);
+    // Store Manager only
+    Route::middleware('role:store_manager,doctor,nurse')->group(function () {
+        Route::resource('medicines', MedicineController::class);
+    });
     
 });
 
 
-
-
-
-
-Route::resource('medicines', MedicineController::class);
-
-Route::resource('intakes', IntakeController::class)->except(['show', 'edit', 'update']);
 
 require __DIR__.'/auth.php';

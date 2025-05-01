@@ -1,34 +1,58 @@
 @extends('layouts.app')
-@if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 @section('content')
-    <h2>Add New Patient</h2>
+    <div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Add New Patient</h2>
+
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-100 border border-red-300 text-red-700 rounded">
+                <ul class="list-disc pl-5 space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('patients.store') }}">
-            @csrf  <!-- CSRF Token -->
+            @csrf
 
-            <label>Name:</label>
-            <input type="text" name="name" required>
+            <!-- Name Field -->
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" name="name" id="name" required
+                       class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
-            <label>Gender:</label>
-            <select name="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+            <!-- Gender Field -->
+            <div class="mb-4">
+                <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                <select name="gender" id="gender" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
 
-            <label>Type:</label>
-            <select name="type" required>
-                <option value="infant">Infant</option>
-                <option value="adult">Adult</option>
-            </select>
+            <!-- Type Field -->
+            <div class="mb-6">
+                <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+                <select name="type" id="type" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Select type</option>
+                    <option value="infant">Infant</option>
+                    <option value="adult">Adult</option>
+                </select>
+            </div>
 
-            <button type="submit">Save</button>
+            <!-- Submit Button -->
+            <div>
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
+                    Save
+                </button>
+            </div>
         </form>
-
+    </div>
 @endsection

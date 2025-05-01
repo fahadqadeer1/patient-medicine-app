@@ -10,27 +10,36 @@
                     </a>
                 </div>
 
+              
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('patients.index')" :active="request()->routeIs('patients.index')">
-                        {{ __('Patients') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('patients.listFemaleAdults')" :active="request()->routeIs('patients.listFemaleAdults')">
-                        {{ __('Female Adults (8PM)') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('patients.listMaleInfants')" :active="request()->routeIs('patients.listMaleInfants')">
-                        {{ __('Male Infants (8AM)') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('medicines.index')" :active="request()->routeIs('medicines.index')">
-                        {{ __('Medicines') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('intakes.index')" :active="request()->routeIs('intakes.index')">
-                        {{ __('Intakes') }}
-                    </x-nav-link>
+
+                    @if(in_array(Auth::user()->type, ['doctor', 'nurse']))
+                        <x-nav-link :href="route('patients.index')" :active="request()->routeIs('patients.index')">
+                            {{ __('Patients') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('patients.listFemaleAdults')" :active="request()->routeIs('patients.listFemaleAdults')">
+                            {{ __('Female Adults (8PM)') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('patients.listMaleInfants')" :active="request()->routeIs('patients.listMaleInfants')">
+                            {{ __('Male Infants (8AM)') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('intakes.index')" :active="request()->routeIs('intakes.index')">
+                            {{ __('Intakes') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if(in_array(Auth::user()->type, ['doctor', 'nurse', 'store_manager']))
+                        <x-nav-link :href="route('medicines.index')" :active="request()->routeIs('medicines.index')">
+                            {{ __('Medicines') }}
+                        </x-nav-link>
+                    @endif
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
