@@ -10,6 +10,17 @@ A Laravel web application for managing patients, medicines, and their intake sch
 - MySQL
 - Node.js & npm
 
+## Project Summary
+Built with Laravel and Laravel Breeze for authentication.
+
+Manages patients, medicines, and intake schedules.
+
+Implements role-based access using a custom type column in the users table.
+
+Clean UI using Tailwind CSS with dynamic menus based on user role.
+
+
+
 ## Setup Instructions
 
 ```bash
@@ -24,6 +35,39 @@ php artisan serve
 
 ```
 
+## 🔑 Roles & Access Control
+User Role	Access Permissions
+doctor / nurse	Manage patients and their medicine intakes
+store_manager	Manage medicines only
+All authenticated users	Access profile and dashboard
+
+
+## 📌 Features
+Patient Management
+
+Create, edit, delete patients
+
+View lists filtered by gender and type (e.g., female adults, male infants)
+
+Medicine Management
+
+Add and edit medicines with intake options of once, twice, or three times daily, using checkboxes for 8 AM, 2 PM, and 8 PM time slots.
+
+Intake Records
+
+Log medicine intake (restricted to doctor / nurse)
+
+User Authentication
+
+Register, login, logout, and manage profile
+
+Role-Based Navigation
+
+Menu items shown/hidden based on the user’s role
+
+Secure Routes
+
+Middleware restricts access to authorized roles only
 
 
 🔗 Available Routes in the Patient Medicine App
