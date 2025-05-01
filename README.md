@@ -77,8 +77,8 @@ All authenticated users	Access profile and dashboard
 | `/patients` | View all patients |
 | `/patients/create` | Create a new patient |
 | `/patients/{id}/edit` | Edit an existing patient |
-| `/patients/female-adults-8pm` | List of female adult patients and their medications for intake at **8 PM** |
-| `/patients/male-infants-8am` | List of male infant patients and their medications for intake at **8 AM** |
+| `/patients/female-adults` | List of female adult patients and their medications for intake at **8 PM** |
+| `/patients/male-infants` | List of male infant patients and their medications for intake at **8 AM** |
 | `/medicines` | View all medicines |
 | `/medicines/create` | Add a new medicine (with multiple intake times) |
 | `/medicines/{id}/edit` | Edit existing medicine |
@@ -91,8 +91,8 @@ All authenticated users	Access profile and dashboard
 ## Apis Routes
 | API Endpoint | Returns |
 |--------------|---------|
-| `GET /api/patients/female-adults-8pm` | All female adult patients with meds at 8 PM |
-| `GET /api/patients/male-infants-8am` | All male infant patients with meds at 8 AM |
+| `GET /api/patients/female-adults` | All female adult patients with meds at 8 PM |
+| `GET /api/patients/male-infants` | All male infant patients with meds at 8 AM |
 
 
 ## 🔐 Access Control
